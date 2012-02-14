@@ -1,0 +1,11 @@
+{
+  "subdomain": "RSSS",
+  "scripts": {
+    "start": "server.js"
+  },
+  "version": "0.0.2-5",
+  "name": "RSSS",
+  "dependencies": {
+    "redis": "0.7.x"
+  }
+}
