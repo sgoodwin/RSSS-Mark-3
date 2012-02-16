@@ -1,9 +1,7 @@
 var server = require("./server");
-var router = require("./router.js").route;
+var router = require("./router.js");
 var requestHandlers = require("./requestHandlers.js");
 
-var paths = {};
-paths["/start"] = requestHandlers.start;
-paths["/upload"] = requestHandlers.upload;
+router.get('/', requestHandlers.start);
 
-server.start(paths, router);
+server.start(router.route);

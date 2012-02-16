@@ -4,7 +4,7 @@ digraph G {
 	"index.js" -> "router.js";
 	"index.js" -> "requestHandlers.js";
 	
-	"server.js" -> "url";
+	"router.js" -> "url";
 	"server.js" -> "http";
 	"db.js" -> "redis";
 }
