@@ -1,7 +1,8 @@
 var server = require("./server");
 var router = require("./router.js");
-var requestHandlers = require("./requestHandlers.js");
+var feedController = require("./feedController.js");
 
-router.get('/', requestHandlers.start);
+router.get('/feeds', feedController.index);
+router.post('/feeds', feedController.create);
 
 server.start(router.route);

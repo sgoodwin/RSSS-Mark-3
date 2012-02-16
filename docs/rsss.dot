@@ -2,7 +2,9 @@ digraph G {
 	node [shape=box];	
 	"index.js" -> "server.js";
 	"index.js" -> "router.js";
-	"index.js" -> "requestHandlers.js";
+	"index.js" -> "feedController.js";
+	
+	"feedController.js" -> "db.js";
 	
 	"router.js" -> "url";
 	"server.js" -> "http";
