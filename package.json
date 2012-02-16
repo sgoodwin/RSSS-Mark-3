@@ -3,7 +3,7 @@
   "scripts": {
     "start": "index.js"
   },
-  "version": "0.0.2-8",
+  "version": "0.0.2-9",
   "name": "RSSS",
   "dependencies": {
     "redis": "0.7.x"
