@@ -1,6 +1,6 @@
-var server = require("./controllers/server");
-var router = require("./controllers/router.js").route;
-var requestHandlers = require("./controllers/requestHandlers.js");
+var server = require("./server");
+var router = require("./router.js").route;
+var requestHandlers = require("./requestHandlers.js");
 
 var paths = {};
 paths["/start"] = requestHandlers.start;
