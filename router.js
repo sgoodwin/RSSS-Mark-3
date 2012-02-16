@@ -1,7 +1,8 @@
 var url = require('url'),
 	routes = {
 		GET: {},
-		POST: {}
+		POST: {},
+		PUT: {}
 	};
 	
 function get(path, handlerFunction){
@@ -13,6 +14,11 @@ function post(path, handlerFunction){
 	routes.POST[path] = handlerFunction;
 }
 exports.post = post;
+
+function put(path, handlerFunction){
+	routes.PUT[path] = handlerFunction;
+}
+exports.put = put;
 
 function route(request, response){
 	var pathname = url.parse(request.url).pathname;

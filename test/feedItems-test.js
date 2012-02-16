@@ -3,19 +3,19 @@ var vows = require('vows'),
 	helper = require('./helper.js'),
 	http = require('http');
 
-vows.describe('Feed Requests').addBatch({
-    'When as ask for all the feeds': {
+vows.describe('FeedItem Requests').addBatch({
+    'When as ask for all the feed items': {
         topic: function () {
-			helper.get('/feeds', {}, this.callback);
+			helper.get('/feedItems', {}, this.callback);
         },
-        'we get all the feeds': function (topic) {
+        'we get all the feed items': function (topic) {
             assert.isObject(topic.body);
-			assert.isNotNull(topic.body.feeds);
+			assert.isNotNull(topic.body.feedItems);
         }
     },
-	'When we try to post a new feed': {
+	'When we try to update feeditems': {
 		topic: function(){
-			helper.post('/feeds', {}, {}, this.callback);
+			helper.put('/feedItems', {}, {}, this.callback);
 		},
 		'we get get a proper response': function(topic){
 			assert.isEmpty(topic.body);

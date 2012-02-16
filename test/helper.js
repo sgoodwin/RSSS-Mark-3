@@ -11,7 +11,23 @@ exports.assert_no_error = function(err){
 	assert.isUndefined(err);
 };
 
-exports.request = function(path, params, callback){
+function tryToJSON(body, response, callback){
+	try{
+		if(body.length > 0){
+			response.body = JSON.parse(body);
+			callback(null, response);
+		}else{
+			response.body = body;
+			callback(null, response);			
+		}
+	}
+	catch(err){
+		response.body = body;
+		callback(err, response);
+	}
+}
+
+exports.get = function(path, params, callback){
 	var options = {
 		host: host,
 		port: port,
@@ -26,24 +42,38 @@ exports.request = function(path, params, callback){
 			body += chunk;
 		});
 		res.on('end', function(){
-			try{
-				if(body.length > 0){
-					var json = JSON.parse(body);
-					res.body = json;
-					callback(null, res);
-				}else{
-					res.body = body;
-					callback(null, res);			
-				}
-			}
-			catch(err){
-				res.body = body;
-				callback(err, res);
-			}
+			tryToJSON(body, res, callback);
 		});
 	}).on('error', function(e) {
 		callback(e, "Failed");
 	});
+};
+
+exports.put = function(path, params, postValues, callback){
+	var options = {
+		host: host,
+		port: port,
+		path: path,
+		headers: {
+			'accept': 'application/json'
+		},
+		method: 'PUT'
+	};
+	var request = http.request(options, function(res){
+		var body = '';
+		res.on('data', function (chunk){
+			body += chunk;
+		});
+		res.on('end', function(){
+			tryToJSON(body, res, callback);
+		});
+	});
+	request.on('error', function(e) {
+		callback(e, "Failed");
+	});
+	var put_data = querystring.stringify(postValues);
+	request.write(put_data);
+	request.end();
 };
 
 exports.post = function(path, params, postValues, callback){
@@ -62,20 +92,7 @@ exports.post = function(path, params, postValues, callback){
 			body += chunk;
 		});
 		res.on('end', function(){
-			try{
-				if(body.length > 0){
-					var json = JSON.parse(body);
-					res.body = json;
-					callback(null, res);
-				}else{
-					res.body = body;
-					callback(null, res);			
-				}
-			}
-			catch(err){
-				console.log('failed to parse json from: ' + body);
-				callback(err, res);
-			}
+			tryToJSON(body, res, callback);
 		});
 	});
 	request.on('error', function(e) {

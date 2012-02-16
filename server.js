@@ -5,5 +5,4 @@ function start(route){
 		route(req, res);		
 	}).listen(8080);
 }
-
 exports.start = start;
