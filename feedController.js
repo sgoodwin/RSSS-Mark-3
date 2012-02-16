@@ -2,7 +2,7 @@ function index(request, response){
 	response.writeHead(200, {"Content-Type": "application/json"});
 	
 	var content = {
-		'f': 'else'
+		'feeds': 'else'
 	};
 	response.end(JSON.stringify(content));	
 }
