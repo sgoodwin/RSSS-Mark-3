@@ -7,5 +7,4 @@ digraph G {
 	"server.js" -> "url";
 	"server.js" -> "http";
 	"db.js" -> "redis";
-	edge [color=blue];
 }
