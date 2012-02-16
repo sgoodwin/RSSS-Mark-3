@@ -10,6 +10,15 @@ vows.describe('Feed Requests').addBatch({
         },
         'we get all the feeds': function (topic) {
             assert.isObject(topic.body);
+			assert.isNotNull(topic.body.feeds);
         }
-    }
+    },
+	'When we try to post a new feed': {
+		topic: function(){
+			helper.post('/feeds', {}, {}, this.callback);
+		},
+		'we get get a proper response': function(topic){
+			assert.isEmpty(topic.body);
+		}
+	}
 }).export(module);

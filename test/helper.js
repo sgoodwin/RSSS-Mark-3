@@ -63,9 +63,14 @@ exports.post = function(path, params, postValues, callback){
 		});
 		res.on('end', function(){
 			try{
-				var json = JSON.parse(body);
-				res.body = json;
-				callback(null, res);
+				if(body.length > 0){
+					var json = JSON.parse(body);
+					res.body = json;
+					callback(null, res);
+				}else{
+					res.body = body;
+					callback(null, res);			
+				}
 			}
 			catch(err){
 				console.log('failed to parse json from: ' + body);
