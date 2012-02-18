@@ -27,13 +27,13 @@ function tryToJSON(body, response, callback){
 	}
 }
 
-exports.get = function(path, callback){
+exports.get = function(accept, path, callback){
 	var options = {
 		host: host,
 		port: port,
 		path: path,
 		headers: {
-			'accept': 'application/json'
+			'accept': accept
 		}
 	};
 	http.get(options, function(res){

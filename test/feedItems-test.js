@@ -6,7 +6,7 @@ var vows = require('vows'),
 vows.describe('FeedItem Requests').addBatch({
     'When as ask for all the feed items': {
         topic: function () {
-			helper.get('/feedItems', this.callback);
+			helper.get('application/json', '/feedItems', this.callback);
         },
         'we get all the feed items': function (topic) {
             assert.isObject(topic.body);
