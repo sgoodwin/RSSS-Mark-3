@@ -1,3 +1,5 @@
+// RSSS Mark III by Samuel Goodwin. Fork away!
+
 var server = require("./lib/server");
 var router = require("./lib/router.js");
 var feedController = require("./lib/feedController.js");
