@@ -4,6 +4,7 @@ var vows = require('vows'),
 	async = require('async'),
 	http = require('http'),
 	opml = require('../lib/opml.js'),
+	index = require('../index.js'),
 	exampleFeed = {'title':'Labnotes', 'type':'rss', 'htmlUrl':'http://labnotes.org/', 'xmlUrl':'http://labnotes.org/feed/atom/'};
 	
 	// Example feed item: 

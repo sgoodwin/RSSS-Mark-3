@@ -4,7 +4,7 @@
     "start": "index.js",
     "test": "vows --dot-matrix"
   },
-  "version": "0.0.2-11",
+  "version": "0.0.2-12",
   "name": "RSSS",
   "dependencies": {
     "redis": "0.7.x",

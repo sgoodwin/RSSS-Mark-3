@@ -1,7 +1,8 @@
 var vows = require('vows'),
     assert = require('assert'),
 	helper = require('./helper.js'),
-	http = require('http');
+	http = require('http'),
+	index = require('../index.js');
 
 vows.describe('FeedItem Requests').addBatch({
     'When as ask for all the feed items': {
