@@ -3,6 +3,7 @@ var vows = require('vows'),
 	helper = require('./helper.js'),
 	async = require('async'),
 	http = require('http'),
+	opml = require('../opml.js'),
 	exampleFeed = {'title':'Labnotes', 'type':'rss', 'htmlUrl':'http://labnotes.org/', 'xmlUrl':'http://labnotes.org/feed/atom/'};
 	
 	// Example feed item: 
@@ -14,10 +15,21 @@ vows.describe('Feed Requests').addBatch({
         topic: function () {
 			helper.get('application/json', '/feeds', this.callback);
         },
-        'we get all the feeds': function (topic) {
+        'we get all the feeds in json': function (topic) {
             assert.isObject(topic.body);
 			assert.isArray(topic.body.feeds);
         }
+    },
+    'When we ask for all the feeds in OPML': {
+	    topic: function () {
+		    var callback = this.callback;
+		    helper.get('application/xml', '/feeds', function(err, result){
+			   opml.parse(result.body, callback);
+		    });
+	    },
+	    'we get all the feeds in OPML': function (topic) {
+		    assert.isObject(topic);
+	    }
     },
 	'When we try to post a new feed': {
 		topic: function(){

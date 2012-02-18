@@ -23,7 +23,7 @@ function tryToJSON(body, response, callback){
 	}
 	catch(err){
 		response.body = body;
-		callback(err, response);
+		callback(null, response);
 	}
 }
 
