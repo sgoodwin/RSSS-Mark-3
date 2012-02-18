@@ -4,8 +4,8 @@
 var assert = require('assert'),
 	http = require('http'),
 	querystring = require('querystring'),
-	host = '0.0.0.0',
-	port = 8080;
+	host = 'rsss.nodejitsu.com',
+	port = 80;
 
 exports.assert_no_error = function(err){
 	assert.isUndefined(err);
