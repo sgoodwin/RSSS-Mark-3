@@ -1,7 +1,7 @@
 var vows = require('vows'),
 	assert = require('assert'),
 	fs = require('fs'),
-	opml = require('../opml.js'),
+	opml = require('../lib/opml.js'),
 	async = require('async');
 	
 vows.describe('The OPML parser').addBatch({

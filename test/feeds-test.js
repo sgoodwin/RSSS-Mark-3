@@ -3,7 +3,7 @@ var vows = require('vows'),
 	helper = require('./helper.js'),
 	async = require('async'),
 	http = require('http'),
-	opml = require('../opml.js'),
+	opml = require('../lib/opml.js'),
 	exampleFeed = {'title':'Labnotes', 'type':'rss', 'htmlUrl':'http://labnotes.org/', 'xmlUrl':'http://labnotes.org/feed/atom/'};
 	
 	// Example feed item: 

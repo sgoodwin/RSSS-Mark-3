@@ -1,7 +1,7 @@
-var server = require("./server");
-var router = require("./router.js");
-var feedController = require("./feedController.js");
-var feedItemController = require("./feedItemController.js");
+var server = require("./lib/server");
+var router = require("./lib/router.js");
+var feedController = require("./lib/feedController.js");
+var feedItemController = require("./lib/feedItemController.js");
 
 router.get('/feeds', feedController.index);
 router.post('/feeds', feedController.create);
