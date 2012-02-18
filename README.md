@@ -1,4 +1,4 @@
-RSSS Mark III
+RSSS Mark III [![Build Status](https://secure.travis-ci.org/sgoodwin/RSSS-Mark-3.png?branch=master)](http://travis-ci.org/sgoodwin/RSSS-Mark-3)
 ===
 
 My third and bestest attempt at an RSSS syncing server.
