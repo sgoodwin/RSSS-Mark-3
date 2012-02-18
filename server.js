@@ -1,5 +1,4 @@
-var http = require('http'),
-	querystring = require('querystring');
+var http = require('http');
 
 function start(route){
 	http.createServer(function (request, response) {		
