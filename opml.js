@@ -1,8 +1,7 @@
 var sax = require("sax"),
 	strict = true, // set to false for html-mode
-	parser = sax.parser(strict),
-	exampleFeed = {'title':'Labnotes', 'type':'rss', 'htmlUrl':'http://labnotes.org/', 'xmlUrl':'http://labnotes.org/feed/atom/'};
-	
+	parser = sax.parser(strict);
+		
 var parse = function(data, callback){
 	var object = {'feeds':{}};
 	var currentFolder = 'main';

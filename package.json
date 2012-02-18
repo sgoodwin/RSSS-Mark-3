@@ -1,17 +1,17 @@
 {
-	"subdomain": "RSSS",
-	"scripts": {
-		"start": "index.js",
-		"test" : "vows --dot-matrix"
-	},
-	"version": "0.0.2-10",
-	"name": "RSSS",
-	"dependencies": {
-		"redis": "0.7.x",
-		"async": "0.1.16",
-		"sax": "0.3.5"
-	},
-	"devDependencies": {
-		"vows": "*"
-	}
+  "subdomain": "RSSS",
+  "scripts": {
+    "start": "index.js",
+    "test": "vows --dot-matrix"
+  },
+  "version": "0.0.2-11",
+  "name": "RSSS",
+  "dependencies": {
+    "redis": "0.7.x",
+    "async": "0.1.16",
+    "sax": "0.3.5"
+  },
+  "devDependencies": {
+    "vows": "*"
+  }
 }
