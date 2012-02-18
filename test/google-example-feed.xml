@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+    <head>
+        <title>Carter subscriptions in Google Reader</title>
+    </head>
+    <body>
+        <outline title="Bands" text="Bands">
+            <outline text="Papa Roach - Events"
+                title="Papa Roach - Events" type="rss"
+                xmlUrl="http://proachriot.com/api/rss/events" htmlUrl="http://paparoach.com/events"/>
+            <outline text="Papa Roach - News" title="Papa Roach - News"
+                type="rss" xmlUrl="http://proachriot.com/api/rss/news" htmlUrl="http://paparoach.com/news"/>
+        </outline>
+        <outline text="furbo.org" title="furbo.org" type="rss"
+            xmlUrl="http://furbo.org/feed/" htmlUrl="http://furbo.org"/>
+        <outline title="App Reviews" text="App Reviews">
+            <outline text="AppStorm" title="AppStorm" type="rss"
+                xmlUrl="http://feeds2.feedburner.com/MacAppStorm?format=xml" htmlUrl="http://mac.appstorm.net"/>
+            <outline text="Appweek.ly" title="Appweek.ly" type="rss"
+                xmlUrl="http://feeds2.feedburner.com/Appweekly?format=xml" htmlUrl="http://www.appweek.ly"/>
+        </outline>
+    </body>
+</opml>

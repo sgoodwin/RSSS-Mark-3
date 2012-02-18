@@ -21,15 +21,15 @@ vows.describe('Feed Requests').addBatch({
         }
     },
     'When we ask for all the feeds in OPML': {
-	    topic: function () {
-		    var callback = this.callback;
-		    helper.get('application/xml', '/feeds', function(err, result){
-			   opml.parse(result.body, callback);
-		    });
-	    },
-	    'we get all the feeds in OPML': function (topic) {
-		    assert.isObject(topic);
-	    }
+		topic: function () {
+			var callback = this.callback;
+			helper.get('application/xml', '/feeds', function(err, result){
+				opml.parse(result.body, callback);
+			});
+		},
+		'we get all the feeds in OPML': function (topic) {
+			assert.isObject(topic);
+		}
     },
 	'When we try to post a new feed': {
 		topic: function(){

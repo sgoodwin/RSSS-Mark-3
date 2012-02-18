@@ -5,10 +5,9 @@ var vows = require('vows'),
 	async = require('async');
 	
 vows.describe('The OPML parser').addBatch({
-	'When we try to parse an OPML file': {
+	'When we try to parse the example-feed': {
 		topic: function () {
 			var callback = this.callback;
-		
 			fs.readFile('test/example-feed.opml', function(err, data){
 				if(err){
 					callback(err, null);
@@ -33,4 +32,42 @@ vows.describe('The OPML parser').addBatch({
 			});
 		}
 	},
+}).addBatch({
+	'When we try to parse the example-feed': {
+		topic: function () {
+			var callback = this.callback;
+			fs.readFile('test/google-example-feed.xml', function(err, data){
+				if(err){
+					callback(err, null);
+				}
+				opml.parse(data.toString('utf8'), callback);
+			});
+		},
+		'we get all the feed items': function (topic) {
+			assert.isObject(topic);
+			assert.isArray(topic.feeds.bands);
+			assert.equal(topic.feeds.bands.length, 3);
+			assert.equal(topic.feeds.appreviews.length, 2);
+		},
+		'each feed in the Bands section has the necessary values': function (topic) {
+			async.forEach(topic.feeds.bands, function(item, callback){
+				assert.isString(item.title);
+				assert.isString(item.htmlUrl);
+				assert.isString(item.xmlUrl);
+				assert.isString(item.type);
+			}, function(err){
+				assert.isNull(err);
+			});
+		},
+		'each feed in the App Reviews section has the necessary values': function (topic) {
+			async.forEach(topic.feeds.appreviews, function(item, callback){
+				assert.isString(item.title);
+				assert.isString(item.htmlUrl);
+				assert.isString(item.xmlUrl);
+				assert.isString(item.type);
+			}, function(err){
+				assert.isNull(err);
+			});
+		}
+	}
 }).export(module);

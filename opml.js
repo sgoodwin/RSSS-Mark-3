@@ -28,7 +28,7 @@ var parse = function(data, callback){
 				}
 				object.feeds[currentFolder].push(feed);
 			}else{
-				currentFolder = attributes.title.toLowerCase();
+				currentFolder = attributes.title.toLowerCase().replace(' ', '');
 			}
 		}
 	};
