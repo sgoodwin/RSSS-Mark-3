@@ -28,7 +28,7 @@ vows.describe('Feed Requests').addBatch({
 			});
 		},
 		'we get all the feeds in OPML': function (topic) {
-			assert.isObject(topic);
+			assert.isObject(topic.feeds);
 		}
     },
 	'When we try to post a new feed': {
