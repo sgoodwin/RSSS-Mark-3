@@ -27,7 +27,7 @@ function tryToJSON(body, response, callback){
 	}
 }
 
-exports.get = function(path, params, callback){
+exports.get = function(path, callback){
 	var options = {
 		host: host,
 		port: port,
@@ -49,7 +49,7 @@ exports.get = function(path, params, callback){
 	});
 };
 
-exports.put = function(path, params, postValues, callback){
+exports.put = function(path, putValues, callback){
 	var options = {
 		host: host,
 		port: port,
@@ -71,12 +71,12 @@ exports.put = function(path, params, postValues, callback){
 	request.on('error', function(e) {
 		callback(e, "Failed");
 	});
-	var put_data = querystring.stringify(postValues);
+	var put_data = querystring.stringify(putValues);
 	request.write(put_data);
 	request.end();
 };
 
-exports.post = function(path, params, postValues, callback){
+exports.post = function(path, postValues, callback){
 	var options = {
 		host: host,
 		port: port,
