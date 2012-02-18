@@ -4,9 +4,8 @@ digraph G {
 	"index.js" -> "router.js";
 	"index.js" -> "feedController.js";
 	
-	"feedController.js" -> "db.js";
+	"feedController.js" -> "opml.js";
 	
 	"router.js" -> "url";
 	"server.js" -> "http";
-	"db.js" -> "redis";
 }
