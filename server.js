@@ -1,8 +1,21 @@
-var http = require('http');
+var http = require('http'),
+	querystring = require('querystring');
 
 function start(route){
-	http.createServer(function (req, res) {		
-		route(req, res);		
+	http.createServer(function (request, response) {		
+		var postData = "";
+		
+		request.setEncoding("utf8");
+		request.addListener("data", function(postDataChunk) {
+		  postData += postDataChunk;
+		});
+		
+		request.addListener("end", function() {
+			if(postData){
+				request.body = JSON.parse(postData);
+			}
+			route(request, response);
+		});
 	}).listen(8080);
 }
 exports.start = start;

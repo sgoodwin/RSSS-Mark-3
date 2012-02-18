@@ -71,7 +71,7 @@ exports.put = function(path, putValues, callback){
 	request.on('error', function(e) {
 		callback(e, "Failed");
 	});
-	var put_data = querystring.stringify(putValues);
+	var put_data = JSON.stringify(putValues);
 	request.write(put_data);
 	request.end();
 };
@@ -98,7 +98,7 @@ exports.post = function(path, postValues, callback){
 	request.on('error', function(e) {
 		callback(e, "Failed");
 	});
-	var post_data = querystring.stringify(postValues);
+	var post_data = JSON.stringify(postValues);
 	request.write(post_data);
 	request.end();
 };
