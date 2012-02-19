@@ -11,7 +11,18 @@ exports.assert_no_error = function(err){
 	assert.isUndefined(err);
 };
 
-function tryToJSON(body, response, callback){
+var basicAuth = function(username, password){
+	username = username || '';
+	password = password || '';
+	var auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+	return auth;
+};
+exports.basicAuth = basicAuth;
+// For tests that aren't testing authentication, use a default account.
+exports.jsonHeaders = {'accept':'application/json', 'authorization': basicAuth('sgoodwin', 'poop')};
+exports.opmlHeaders = {'accept':'application/xml', 'authorization': basicAuth('sgoodwin', 'poop')};
+
+var tryToJSON = function(body, response, callback){
 	try{
 		if(body.length > 0){
 			response.body = JSON.parse(body);
@@ -27,14 +38,12 @@ function tryToJSON(body, response, callback){
 	}
 }
 
-exports.get = function(accept, path, callback){
+exports.get = function(headers, path, callback){
 	var options = {
 		host: host,
 		port: port,
 		path: path,
-		headers: {
-			'accept': accept
-		}
+		headers: headers
 	};
 	http.get(options, function(res){
 		var body = '';
@@ -49,14 +58,12 @@ exports.get = function(accept, path, callback){
 	});
 };
 
-exports.put = function(path, putValues, callback){
+exports.put = function(headers, path, putValues, callback){
 	var options = {
 		host: host,
 		port: port,
 		path: path,
-		headers: {
-			'accept': 'application/json'
-		},
+		headers: headers,
 		method: 'PUT'
 	};
 	var request = http.request(options, function(res){
@@ -76,14 +83,12 @@ exports.put = function(path, putValues, callback){
 	request.end();
 };
 
-exports.post = function(path, postValues, callback){
+exports.post = function(headers, path, postValues, callback){
 	var options = {
 		host: host,
 		port: port,
 		path: path,
-		headers: {
-			'accept': 'application/json'
-		},
+		headers: headers,
 		method: 'POST'
 	};
 	var request = http.request(options, function(res){

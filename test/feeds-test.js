@@ -11,10 +11,13 @@ var vows = require('vows'),
 	// htmlUrl="http://labnotes.org/" xmlUrl="http://labnotes.org/feed/atom/"/>
 
 vows.describe('Feed Requests').addBatch({
-    'When as ask for all the feeds in JSON': {
-        topic: function () {
-			helper.get('application/json', '/feeds', this.callback);
-        },
+	'When as ask for all the feeds in JSON': {
+		topic: function () {
+			helper.get(helper.jsonHeaders, '/feeds', this.callback);
+		},
+		'we get a 200 code back': function(topic){
+			assert.equal(topic.statusCode, 200);
+		},
         'we get all the feeds in json': function (topic) {
             assert.isObject(topic.body);
 			assert.isArray(topic.body.feeds);
@@ -23,7 +26,7 @@ vows.describe('Feed Requests').addBatch({
     'When we ask for all the feeds in OPML': {
 		topic: function () {
 			var callback = this.callback;
-			helper.get('application/xml', '/feeds', function(err, result){
+			helper.get(helper.opmlHeaders, '/feeds', function(err, result){
 				opml.parse(result.body, callback);
 			});
 		},
@@ -33,7 +36,10 @@ vows.describe('Feed Requests').addBatch({
     },
 	'When we try to post a new feed': {
 		topic: function(){
-			helper.post('/feeds', {'feed':exampleFeed}, this.callback);
+			helper.post(helper.opmlHeaders, '/feeds', {'feed':exampleFeed}, this.callback);
+		},
+		'we get a 200 code back': function(topic){
+			assert.equal(topic.statusCode, 200);
 		},
 		'we get get a proper response': function(topic){
 			assert.isObject(topic.body);
