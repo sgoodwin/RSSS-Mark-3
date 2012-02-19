@@ -2,7 +2,6 @@ var vows = require('vows'),
     assert = require('assert'),
 	helper = require('./helper.js'),
 	async = require('async'),
-	http = require('http'),
 	opml = require('../lib/opml.js'),
 	index = require('../index.js'),
 	exampleFeed = {'title':'Labnotes', 'type':'rss', 'htmlUrl':'http://labnotes.org/', 'xmlUrl':'http://labnotes.org/feed/atom/'};
