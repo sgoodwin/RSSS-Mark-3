@@ -3,6 +3,7 @@ digraph G {
 	"index.js" -> "server.js";
 	"index.js" -> "router.js";
 	"index.js" -> "feedController.js";
+	"index.js" -> "auth.js";
 	
 	"feedController.js" -> "opml.js";
 	
