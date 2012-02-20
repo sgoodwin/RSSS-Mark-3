@@ -13,7 +13,7 @@ vows.describe('FeedItem Requests').addBatch({
 		},
         'we get all the feed items': function (topic) {
             assert.isObject(topic.body);
-			assert.isNotNull(topic.body.feedItems);
+			assert.isArray(topic.body.feedItems);
         }
     },
 	'When we try to update feeditems': {
