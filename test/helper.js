@@ -36,7 +36,7 @@ var tryToJSON = function(body, response, callback){
 		response.body = body;
 		callback(null, response);
 	}
-}
+};
 
 exports.get = function(headers, path, callback){
 	var options = {
