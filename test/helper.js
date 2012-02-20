@@ -7,22 +7,19 @@ var assert = require('assert'),
 	host = '0.0.0.0',
 	port = 8080;
 
-exports.assert_no_error = function(err){
-	assert.isUndefined(err);
-};
-
-var basicAuth = function(username, password){
+function basicAuth(username, password){
 	username = username || '';
 	password = password || '';
 	var auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
 	return auth;
-};
+}
 exports.basicAuth = basicAuth;
+
 // For tests that aren't testing authentication, use a default account.
 exports.jsonHeaders = {'accept':'application/json', 'authorization': basicAuth('sgoodwin', 'poop')};
 exports.opmlHeaders = {'accept':'application/xml', 'authorization': basicAuth('sgoodwin', 'poop')};
 
-var tryToJSON = function(body, response, callback){
+function tryToJSON(body, response, callback){
 	try{
 		if(body.length > 0){
 			response.body = JSON.parse(body);
@@ -36,9 +33,9 @@ var tryToJSON = function(body, response, callback){
 		response.body = body;
 		callback(null, response);
 	}
-};
+}
 
-exports.get = function(headers, path, callback){
+function get(headers, path, callback){
 	var options = {
 		host: host,
 		port: port,
@@ -56,9 +53,10 @@ exports.get = function(headers, path, callback){
 	}).on('error', function(e) {
 		callback(e, "Failed");
 	});
-};
+}
+exports.get = get;
 
-exports.put = function(headers, path, putValues, callback){
+function put(headers, path, putValues, callback){
 	var options = {
 		host: host,
 		port: port,
@@ -81,9 +79,10 @@ exports.put = function(headers, path, putValues, callback){
 	var put_data = JSON.stringify(putValues);
 	request.write(put_data);
 	request.end();
-};
+}
+exports.put = put;
 
-exports.post = function(headers, path, postValues, callback){
+function post(headers, path, postValues, callback){
 	var options = {
 		host: host,
 		port: port,
@@ -106,4 +105,5 @@ exports.post = function(headers, path, postValues, callback){
 	var post_data = JSON.stringify(postValues);
 	request.write(post_data);
 	request.end();
-};
+}
+exports.post = post;
