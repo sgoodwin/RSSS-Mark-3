@@ -6,14 +6,7 @@ var vows = require('vows'),
 	userBHeaders = {'accept':'application/json','authorization': helper.basicAuth('kisom', 'poop')},
 	userAHeaders = {'accept':'application/json', 'authorization':helper.basicAuth('sgoodwin', 'poop')},
 	exampleFeed = {'title':'Labnotes', 'type':'rss', 'htmlUrl':'http://labnotes.org/', 'xmlUrl':'http://labnotes.org/feed/atom/'};
-
-/*
-
-A user should only see feeds and feed item associated with their account
-
-A user should be able to get summary info about their account?
-*/
-
+	
 vows.describe('User authentication').addBatch({
 	'When a user asks for all the feeds in JSON without authentication': {
 		topic: function () {
