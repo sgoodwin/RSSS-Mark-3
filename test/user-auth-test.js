@@ -60,7 +60,7 @@ vows.describe('User authentication').addBatch({
 			helper.get(userAHeaders, '/feeds', function(err, responseA){
 				helper.get(userBHeaders, '/feeds', function(err, responseB){
 					topicCallback(null, [responseA.body.feeds, responseB.body.feeds]);
-				})
+				});
 			});
 		},
 		'User B should not have the same feed list': function (topic) {
